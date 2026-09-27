@@ -19,11 +19,11 @@ def health_check():
     return jsonify ({
         'status':'healthy',
         'time': current_date_time,
-        'message': 'This is a new message, i think -_-5'
+        'deployed_on': 'kubernetes'
     }), 200
     
-@app.route("/api/v1//details")
-def system_info():
+@app.route("/api/v1/info")
+def info():
     return jsonify({
         "system":os.name,
         "operating system":platform.system(),
