@@ -47,8 +47,7 @@ jobs:
         curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py
         python3 get-pip.py --break-system-packages
         pip3 install --break-system-packages yq
-        yq -Yi '.image.tag = ""${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
-        rm get-pip.py
+        yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v9
