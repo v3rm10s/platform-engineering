@@ -17,13 +17,18 @@ jobs:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Declare some variables
+    - name: Shorten commit id
       shell: bash
       run: |
-        SHORT_SHA="${GITHUB_SHA::7}"
+        echo "COMMIT_ID=${GITHUB_SHA::6}" >> "$GITHUB_ENV"
+
+    - name: Another step
+      run: |
+        echo "Branch: ${{ env.branch }}"
+        echo "Sha: ${{ env.sha_short }}"
 
     - name: Build and push
       uses: docker/build-push-action@v7
       with:
         push: true
-        tags: v3rm10s/python-app:${{env.sha_short}}
+        tags: v3rm10s/python-app:${{env.COMMIT_ID}}
