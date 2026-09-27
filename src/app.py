@@ -19,7 +19,7 @@ def health_check():
     return jsonify ({
         'status':'healthy',
         'time': current_date_time,
-        'message': 'what did you change this time? Nothing I hope, alot'
+        'message': 'what did you change this time? Nothing I hope, alot. Yup'
     }), 200
     
 @app.route("/api/v1//details")
