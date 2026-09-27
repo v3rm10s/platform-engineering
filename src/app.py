@@ -19,7 +19,6 @@ def health_check():
     return jsonify ({
         'status':'healthy',
         'time': current_date_time,
-        'message': 'Infinite'
     }), 200
     
 @app.route("/api/v1//details")
@@ -29,7 +28,8 @@ def system_info():
         "operating system":platform.system(),
         "os version":platform.version(),
         "architecture":platform.machine(),
-        "hostname":socket.gethostname()
+        "hostname":socket.gethostname(),
+        "address":platform.platform()
     })
 
 
