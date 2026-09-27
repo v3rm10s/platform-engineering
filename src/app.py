@@ -18,7 +18,8 @@ def hello_world():
 def health_check():
     return jsonify ({
         'status':'healthy',
-        'time': current_date_time
+        'time': current_date_time,
+        'message': 'Infinite'
     }), 200
     
 @app.route("/api/v1//details")
