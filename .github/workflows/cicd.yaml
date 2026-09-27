@@ -44,8 +44,8 @@ jobs:
       shell: bash
       run: |
         echo ${{needs.ci.outputs.commit_id}}
-        pipx install yq
-        sudo yq -Yi '.image.tag = ""${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
+        pip install --break-system-packages yq
+        yq -Yi '.image.tag = ""${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v9
